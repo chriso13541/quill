@@ -1,0 +1,62 @@
+<!doctype html><html><head><style>
+body { margin: 0; }
+.t { height: 200px; overflow: hidden; }
+</style></head><body>
+<!-- rect: #a = 0 0 1024 30 -->
+<!-- rect: #b = 0 40 1024 20 -->
+<!-- rect: #c = 0 75 1024 10 -->
+<div class="t"><div id="a" style="height:30px"></div><div id="b" style="height:20px;margin:10px 0 5px"></div><div id="c" style="height:10px;margin-top:15px"></div></div>
+
+<!-- rect: #p2 = 0 230 1024 10 -->
+<!-- rect: #c2 = 0 230 1024 10 -->
+<div class="t"><div id="p2" style="margin-top:20px"><div id="c2" style="margin-top:30px;height:10px"></div></div></div>
+
+<!-- rect: #e1 = 0 400 1024 10 -->
+<!-- rect: #e2 = 0 430 1024 10 -->
+<div class="t"><div id="e1" style="height:10px"></div><div id="em" style="margin:20px 0"></div><div id="e2" style="height:10px;margin-top:5px"></div></div>
+
+<!-- rect: #w1 = 400 600 224 44 -->
+<!-- rect: #w2 = 412 650 200 24 -->
+<div class="t"><div id="w1" style="width:200px;padding:10px;border:2px solid;margin:0 auto;height:20px"></div>
+<div id="w2" style="width:200px;box-sizing:border-box;padding:10px;border:2px solid;margin:6px auto 0 412px;height:20px"></div></div>
+
+<!-- rect: #pc = 0 800 512 10 -->
+<!-- rect: #pc2 = 0 800 256 10 -->
+<div class="t"><div id="pc" style="width:50%"><div id="pc2" style="width:50%;height:10px"></div></div></div>
+
+<!-- rect: #tx = 0 1000 80 32 -->
+<!-- line: #tx 0 = 0 1000 72 16 -->
+<!-- line: #tx 1 = 0 1016 32 16 -->
+<div class="t"><div id="tx" style="width:80px">aaaa bbbb cccc</div></div>
+
+<!-- line: #ta 0 = 34 1200 32 16 -->
+<div class="t"><div id="ta" style="width:100px;text-align:center">aaaa</div></div>
+
+<!-- rect: #br1 = 0 1400 1024 64 -->
+<div class="t"><div id="br1">a<br>b<br><br>c</div></div>
+
+<!-- rect: #ib = 0 1600 48 24 -->
+<div class="t"><div><span id="ib" style="display:inline-block;padding:4px">hello</span></div></div>
+
+<!-- rect: #lh = 0 1800 1024 30 -->
+<div class="t"><div id="lh" style="line-height:30px">x</div></div>
+
+<!-- rect: #im = 0 2000 100 50 -->
+<!-- rect: #imc = 0 2000 1024 53.2 -->
+<div class="t"><div id="imc"><img id="im" width="100" height="50"></div></div>
+
+<!-- rect: #mm = 0 2200 300 5 -->
+<!-- rect: #mm2 = 0 2210 300 5 -->
+<div class="t"><div id="mm" style="width:500px;max-width:300px;height:5px"></div><div id="mm2" style="width:100px;min-width:300px;height:5px;margin-top:5px"></div></div>
+
+<!-- rect: #ul = 0 2400 1024 16 -->
+<!-- rect: #li1 = 40 2400 984 16 -->
+<div class="t"><ul id="ul" style="margin:0;padding-left:40px"><li id="li1">item</li></ul></div>
+
+<!-- rect: #pa = 0 2600 1024 16 -->
+<div class="t"><div id="pa"><span style="position:absolute">zzz</span>q</div></div>
+
+<!-- rect: #ind = 0 2800 1024 16 -->
+<!-- line: #ind 0 = 20 2800 16 16 -->
+<div class="t"><div id="ind" style="text-indent:20px">ab</div></div>
+</body></html>

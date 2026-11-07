@@ -1,0 +1,9 @@
+build/
+build-*/
+CMakeCache.txt
+CMakeFiles/
+compile_commands.json
+*.o
+*.a
+*.png
+!docs/*.png

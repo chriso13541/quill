@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html><head><title>style sharing</title>
+<!-- viewport: 800x600 -->
+<!-- Siblings with the same tag and classes may share one computed style (libcss does the matching once). Here every
+     parent has no id, so it is a candidate; the spans inside (with ids) show which style each parent really got,
+     through inheritance. Each parent must come out as if styled on its own. -->
+<style>
+p[data-k="1"] { color: #ff0000 }
+p[data-k="2"] { color: #00ff00 }
+div.box { color: #0000ff }
+div.box[title] { color: #ff00ff }
+li:first-child { color: #884400 }
+section > p + p { background-color: #eeeeee }
+[data-on] { color: #00aa00 }
+</style></head>
+<body>
+<!-- an attribute rule tells siblings apart; the third looks back past one that shared -->
+<!-- expect: span#a1 color = #ff0000 -->
+<!-- expect: span#a2 color = #ff0000 -->
+<!-- expect: span#a3 color = #00ff00 -->
+<!-- expect: span#a4 color = #ff0000 -->
+<!-- expect: span#a5 color = #000000 -->
+<div>
+<p data-k="1"><span id="a1">a</span></p>
+<p data-k="1"><span id="a2">b</span></p>
+<p data-k="2"><span id="a3">c</span></p>
+<p data-k="1"><span id="a4">d</span></p>
+<p data-k="3"><span id="a5">e</span></p>
+</div>
+<!-- [title] selects on presence; an attribute no rule names does not stop sharing (nor matter) -->
+<!-- expect: span#b1 color = #0000ff -->
+<!-- expect: span#b2 color = #ff00ff -->
+<!-- expect: span#b3 color = #ff00ff -->
+<!-- expect: span#b4 color = #0000ff -->
+<div class="box"><span id="b1">a</span></div>
+<div class="box" title="t"><span id="b2">b</span></div>
+<div class="box" title="u"><span id="b3">c</span></div>
+<div class="box" data-unused="1"><span id="b4">d</span></div>
+<!-- presentational hints: <font color> on otherwise identical siblings -->
+<!-- expect: span#f1 color = #ff0000 -->
+<!-- expect: span#f2 color = #0000ff -->
+<!-- expect: span#f3 color = #ff0000 -->
+<p><font color="red"><span id="f1">r</span></font><font color="blue"><span id="f2">b</span></font><font color="red"><span id="f3">r</span></font></p>
+<!-- a universal attribute rule (like the UA's [hidden]: considered for every element) -->
+<!-- expect: em#h1 color = #000000 -->
+<!-- expect: em#h2 color = #00aa00 -->
+<!-- expect: em#h3 color = #000000 -->
+<p><b><em id="h1">x</em></b><b data-on><em id="h2">y</em></b><b><em id="h3">z</em></b></p>
+<!-- sibling-dependent rules are never shared -->
+<!-- expect: span#l1 color = #884400 -->
+<!-- expect: span#l2 color = #000000 -->
+<ul><li><span id="l1">1</span></li><li><span id="l2">2</span></li></ul>
+<section id="s"><p>one</p><p id="p2">two</p></section>
+<!-- expect: p#p2 background-color = #eeeeee -->
+</body></html>

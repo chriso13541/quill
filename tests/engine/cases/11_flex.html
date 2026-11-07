@@ -1,0 +1,57 @@
+<!doctype html><html><head><style>
+body { margin: 0; }
+.t { height: 200px; overflow: hidden; }
+.f { display: flex; }
+</style></head><body>
+<!-- rect: #a1 = 0 0 100 10 -->
+<!-- rect: #b1 = 100 0 200 10 -->
+<!-- rect: #c1 = 300 0 50 10 -->
+<div class=t><div class=f style=""><div class=i id=a1 style='width:100px;height:10px'></div><div class=i id=b1 style='width:200px;height:10px'></div><div class=i id=c1 style='width:50px;height:10px'></div></div></div>
+
+<!-- rect: #a2 = 0 200 50 10 -->
+<!-- rect: #b2 = 50 200 250 10 -->
+<div class=t><div class=f style="width:300px"><div class=i id=a2 style='width:50px;height:10px'></div><div class=i id=b2 style='flex-grow:1;height:10px'></div></div></div>
+
+<!-- rect: #a3 = 0 400 100 10 -->
+<!-- rect: #b3 = 100 400 200 10 -->
+<div class=t><div class=f style="width:300px"><div class=i id=a3 style='flex-grow:1;flex-basis:0;height:10px'></div><div class=i id=b3 style='flex-grow:2;flex-basis:0;height:10px'></div></div></div>
+
+<!-- rect: #a4 = 0 600 50 10 -->
+<!-- rect: #b4 = 250 600 50 10 -->
+<div class=t><div class=f style="width:300px;justify-content:space-between"><div class=i id=a4 style='width:50px;height:10px'></div><div class=i id=b4 style='width:50px;height:10px'></div></div></div>
+
+<!-- rect: #a5 = 0 840 50 20 -->
+<div class=t><div class=f style="height:100px;align-items:center"><div class=i id=a5 style='width:50px;height:20px'></div></div></div>
+
+<!-- rect: #b6 = 50 1000 50 50 -->
+<div class=t><div class=f style=""><div class=i id=a6 style='width:50px;height:50px'></div><div class=i id=b6 style='width:50px'></div></div></div>
+
+<!-- rect: #a7 = 0 1200 60 10 -->
+<!-- rect: #b7 = 0 1210 60 10 -->
+<div class=t><div class=f style="width:100px;flex-wrap:wrap"><div class=i id=a7 style='width:60px;height:10px'></div><div class=i id=b7 style='width:60px;height:10px'></div></div></div>
+
+<!-- rect: #a8 = 0 1400 50 10 -->
+<!-- rect: #b8 = 50 1400 50 10 -->
+<div class=t><div class=f style="width:100px"><div class=i id=a8 style='width:100px;height:10px'></div><div class=i id=b8 style='width:100px;height:10px'></div></div></div>
+
+<!-- rect: #a9 = 0 1600 1024 10 -->
+<!-- rect: #b9 = 0 1610 1024 20 -->
+<div class=t><div class=f style="flex-direction:column"><div class=i id=a9 style='height:10px'></div><div class=i id=b9 style='height:20px'></div></div></div>
+
+<!-- rect: #a10 = 250 1800 50 10 -->
+<div class=t><div class=f style="width:300px"><div class=i id=a10 style='width:50px;height:10px;margin-left:auto'></div></div></div>
+
+<!-- rect: #b11 = 60 2000 50 10 -->
+<div class=t><div class=f style="gap:10px"><div class=i id=a11 style='width:50px;height:10px'></div><div class=i id=b11 style='width:50px;height:10px'></div></div></div>
+
+<!-- rect: #b12 = 0 2210 1024 90 -->
+<div class=t><div class=f style="flex-direction:column;height:100px"><div class=i id=a12 style='height:10px'></div><div class=i id=b12 style='flex-grow:1'></div></div></div>
+
+<!-- rect: #a13 = 0 2400 32 16 -->
+<div class=t><div class=f style=""><div class=i id=a13>abcd</div></div></div>
+
+<!-- rect: #a14 = 250 2600 50 10 -->
+<!-- rect: #b14 = 200 2600 50 10 -->
+<div class=t><div class=f style="width:300px;flex-direction:row-reverse"><div class=i id=a14 style='width:50px;height:10px'></div><div class=i id=b14 style='width:50px;height:10px'></div></div></div>
+
+</body></html>

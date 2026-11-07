@@ -1,0 +1,123 @@
+# Quill configuration.
+# Copy to  ~/.config/quill/config.ini  (Linux)  or  %APPDATA%\quill\config.ini  (Windows),
+# or point to any file with  quill --config FILE  or the QUILL_CONFIG environment variable.
+# Lines are "key = value"; '#' starts a comment. Every key is optional.
+
+# --- Search -----------------------------------------------------------------
+# %s is replaced by the percent-encoded search terms. This is DuckDuckGo's
+# no-JavaScript endpoint, which is what Quill is built for.
+search_url = https://html.duckduckgo.com/html/?q=%s
+
+# Page opened at startup.
+home = about:home
+
+# Shortcut tiles on the start page (about:home): "Name|URL" pairs, comma separated, up to 12.
+# Empty = Wikipedia, DuckDuckGo, The Old Net, 68k.news, FrogFind, Wiby.
+#   home_links = Wikipedia|https://en.wikipedia.org/, Wiby|https://wiby.me/, NAS|http://nas.lan/
+home_links =
+
+# --- DNS --------------------------------------------------------------------
+# DNS-over-HTTPS for public hostnames. Use an IP-literal URL so looking up the
+# DoH server does not itself go through your system resolver. Private names
+# (router, nas.lan, *.local, 192.168.x.x, ...) always use the system resolver.
+# Leave empty to use the system resolver for everything.
+#   Quad9:      https://9.9.9.9/dns-query
+#   Cloudflare: https://1.1.1.1/dns-query
+#   Your own:   https://dns.example.net/dns-query
+doh_url = https://9.9.9.9/dns-query
+
+# If a DoH lookup fails, retry with the system resolver (leaks the query to it).
+doh_fallback = false
+
+# --- Plain HTTP and private network ------------------------------------------
+# http:// to a PUBLIC host shows a warning page first. Hosts listed here skip it.
+# (http:// to private hosts - router, localhost, 192.168.x.x, *.lan - never warns.)
+http_allow =
+
+# When that warning appears:
+#   typed  - (default) for addresses you type or open from outside, and when an https page sends you to http.
+#            Links you follow from a page that is already plain http open directly, like Firefox does, so
+#            browsing the old web doesn't stop at every click.
+#   always - for every public http page whose host isn't allowed yet, links included.
+#   never  - never; http pages still say "Not secure" in the status line.
+http_warning = typed
+
+# Memory for already-rendered page (per tab, MB). Scrolling over rendered parts is then just a copy, which keeps
+# scrolling smooth on slow CPUs. Each 256 px tall strip of a 1000 px wide window takes 1 MB. 0 = repaint every frame.
+render_cache_mb = 128
+# Render the rest of the page into that memory while nothing else is happening, so scrolling to it is instant.
+prerender = true
+
+# Extra names to treat as private/LAN. They use the system resolver (so split-horizon
+# DNS works), may be opened over plain http, and may load private subresources.
+# Exact names or "*.suffix" patterns, comma separated.
+#   private_allow = app.example.net, *.home.example.net
+private_allow =
+
+# --- Cookies and self-signed LAN certificates ----------------------------------
+# First-party, session-only cookies (needed for logins). Set to false to disable.
+cookies = true
+# Trust a self-signed certificate on a PRIVATE host, pinned to its key. Quill shows the
+# pin to use on its warning page. Comma separated host=sha256//BASE64 pairs, e.g.
+#   trusted_certs = crafty.lan=sha256//AbC...=, 192.168.1.20=sha256//XyZ...=
+trusted_certs =
+
+# --- Misc ---------------------------------------------------------------------
+# Sent with every request. Quill's other headers (Accept, Sec-Fetch-*) match the browser this names.
+user_agent = Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0
+
+# Referer: strict (default: full address to the same origin, just the origin to other
+# https sites, nothing to http; pages may ask for less, never more), origin (only ever
+# the origin), off (never), full (whatever the page's Referrer-Policy says).
+referrer = strict
+
+# Default page zoom in percent (30-300). Ctrl +/- zoom one site; Ctrl 0 goes back to this.
+zoom = 100
+
+# Keep stylesheets, pictures and fonts in memory as their caching headers allow.
+http_cache = true
+http_cache_mb = 64
+
+# Look up and connect to the search engine at startup, and to a link's host while it is
+# being clicked, so the page starts arriving sooner.
+preconnect = true
+
+# Proxy URL; empty = libcurl's usual environment variables (https_proxy, ...).
+# NOTE: with a proxy in use the DNS-rebinding socket check is skipped, because the
+# proxy, not Quill, resolves and connects.
+proxy =
+
+# Extra directory to search for .ttf/.ttc fonts (system font dirs are searched anyway).
+font_dir =
+
+# --- Web fonts, site icons, cache ---------------------------------------------
+# @font-face fonts (TrueType / WOFF / WOFF2), checked and rebuilt before use.
+web_fonts = true
+# Site icons in the tab strip.
+favicons = true
+# Keep downloaded fonts and site icons on disk between sessions. This leaves a record of
+# which sites you visited (file names are hashed URLs). false = memory only.
+disk_cache = true
+# Where; empty = ~/.cache/quill (Linux, or $XDG_CACHE_HOME/quill), %LOCALAPPDATA%\quill\cache (Windows).
+cache_dir =
+
+# --- History ---------------------------------------------------------------
+# Pages you visit, listed on about:history (Ctrl+H) and kept between sessions (visited links
+# also stay purple). false = nothing is recorded.
+history = true
+# Visits older than this many days are dropped when Quill starts.
+history_days = 90
+# Where; empty = ~/.local/share/quill/history.tsv (Linux, or $XDG_DATA_HOME/quill), %APPDATA%\quill\history.tsv (Windows).
+history_file =
+
+# Folder of <name>.svg icons that replace the built-in Material Icons (e.g. Material Symbols
+# or Noto). Names: back forward reload close add home shield-check lock lock-open key info
+# warning search. Missing names keep the built-in icon.
+icon_dir =
+
+max_page_mb = 16
+max_image_mb = 24
+timeout_s = 30
+image_threads = 4
+window_width = 1100
+window_height = 800

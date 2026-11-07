@@ -1,0 +1,37 @@
+<!doctype html><html class="theme-day"><head><style>
+:root { --fg: #112233; --gap: 12px; --big: calc(var(--gap) * 2); --alias: var(--fg); --sz: 1.5rem; }
+html.theme-day { --bg: #fafafa; }
+html.theme-night { --bg: #000000; }
+@media (prefers-color-scheme: dark) { :root { --fg: #ffffff; } }
+@media (min-width: 2000px) { :root { --gap: 99px; } }
+@media (max-width: 3000px) { :root { --media-ok: 7px; } }
+body { color: var(--fg); background: var(--bg); }
+.a { margin-top: var(--gap); padding-left: var(--big); }
+.b { color: var(--alias); }
+.c { color: var(--missing, #abcdef); }
+.d { color: var(--missing); width: 33px; }
+.e { width: var(--media-ok); font-size: var(--sz); }
+.f { color: var(--nested, var(--fg)); }
+.g { margin: var(--gap) 3px var(--gap) 3px; }
+.h { --local: red; color: var(--local, #010203); }
+@import-ish { }
+</style></head><body>
+<!-- viewport: 800x600 -->
+<!-- expect: body color = #112233 -->
+<!-- expect: body background-color = #fafafa -->
+<!-- expect: .a margin-top = 12px -->
+<!-- expect: .a padding-left = 24px -->
+<!-- expect: .b color = #112233 -->
+<!-- expect: .c color = #abcdef -->
+<!-- expect: .d width = 33px -->
+<!-- expect: .d color = #112233 -->
+<!-- expect: .e width = 7px -->
+<!-- expect: .e font-size = 24px -->
+<!-- expect: .f color = #112233 -->
+<!-- expect: .g margin-left = 3px -->
+<!-- expect: .g margin-top = 12px -->
+<!-- expect: .i margin-top = 12px -->
+<div class="a">a</div><div class="b">b</div><div class="c">c</div><div class="d">d</div>
+<div class="e">e</div><div class="f">f</div><div class="g">g</div><div class="h">h</div>
+<div class="i" style="margin-top: var(--gap)">i</div>
+</body></html>

@@ -1,0 +1,11 @@
+<!doctype html><html><head><style>
+body { margin: 0; }
+.c { display:grid; column-gap:24px; grid-template: min-content 1fr min-content / 200px minmax(0,1fr); grid-template-areas:'siteNotice siteNotice' 'columnStart pageContent' 'footer footer'; width:1000px }
+.c > .a { grid-area: siteNotice } .c > .b { grid-area: columnStart } .c > .d { grid-area: pageContent } .c > .e { grid-area: footer }
+</style></head><body>
+<!-- rect: #a = 0 0 1000 10 -->
+<!-- rect: #b = 0 10 200 30 -->
+<!-- rect: #d = 224 10 776 30 -->
+<!-- rect: #e = 0 40 1000 10 -->
+<div class=c><div class=a id=a style="height:10px"></div><div class=b id=b style="height:30px"></div><div class=d id=d style="height:30px"></div><div class=e id=e style="height:10px"></div></div>
+</body></html>

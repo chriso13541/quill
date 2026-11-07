@@ -1,0 +1,9 @@
+<!doctype html><html><head><title>t</title></head><body>
+<!-- expect: noscript display = block -->
+<!-- expect: div.hid display = none -->
+<!-- expect: input.hidden display = none -->
+<!-- expect: p color = #0000ff -->
+<noscript><p style="color:#0000ff">fallback</p></noscript>
+<div class="hid" hidden>h</div><input class="hidden" type="hidden">
+<p style="color: blue">unclosed<p>second
+</body></html>

@@ -1,0 +1,42 @@
+<!doctype html><html><head><style>
+body { margin: 0; }
+.t { height: 200px; overflow: hidden; }
+#m1, #m2, #m3, #m4 { width: 10px; }
+@media (width >= 576px) { #m1 { width: 21px; } }
+@media (width<=500px) { #m2 { width: 22px; } }
+@media (300px < width <= 2000px) { #m3 { width: 23px; } }
+@media screen and (width>=768px) and (min-width: 100px) { #m4 { width: 24px; } }
+.col { display: flex; flex-direction: column; height: 50px; }
+.row { display: flex; width: 100px; }
+</style></head><body>
+<!-- Media Queries 4 range syntax, name first (Bootstrap 4.6 builds use it) -->
+<!-- rect: #m1 = 0 0 21 10 -->
+<!-- rect: #m2 = 0 10 10 10 -->
+<!-- rect: #m3 = 0 20 23 10 -->
+<!-- rect: #m4 = 0 30 24 10 -->
+<div class=t><div id=m1 style="height:10px"></div><div id=m2 style="height:10px"></div><div id=m3 style="height:10px"></div><div id=m4 style="height:10px"></div></div>
+
+<!-- flex items don't shrink below their content (min-height: auto): the column overflows instead of squashing; only the min-height:0 item gives way -->
+<!-- rect: #c1 = 0 200 1024 40 -->
+<!-- rect: #c2 = 0 240 1024 40 -->
+<!-- rect: #c3 = 0 280 1024 0 -->
+<div class=t><div class=col><div id=c1><div style="height:40px"></div></div><div id=c2><div style="height:40px"></div></div><div id=c3 style="height:10px;min-height:0;overflow:hidden"></div></div></div>
+
+<!-- an explicit min-height:0 / overflow:hidden item may shrink -->
+<!-- rect: #d1 = 0 400 1024 25 -->
+<!-- rect: #d2 = 0 425 1024 25 -->
+<div class=t><div class=col><div id=d1 style="min-height:0"><div style="height:40px"></div></div><div id=d2 style="overflow:hidden"><div style="height:40px"></div></div></div></div>
+
+<!-- row: an item with an empty box and a width shrinks; one with a wide child keeps its min-content -->
+<!-- rect: #r1 = 0 600 50 10 -->
+<!-- rect: #r2 = 50 600 50 10 -->
+<!-- rect: #r3 = 0 610 80 10 -->
+<!-- rect: #r4 = 80 610 20 10 -->
+<div class=t><div class=row><div id=r1 style="width:100px;height:10px"></div><div id=r2 style="width:100px;height:10px"></div></div>
+<div class=row><div id=r3 style="width:100px;height:10px"><div style="width:80px"></div></div><div id=r4 style="width:100px;height:10px"></div></div></div>
+
+<!-- <source> is a void element: what follows a <picture> / <video> is not swallowed into it -->
+<!-- rect: #pv = 0 800 40 10 -->
+<div class=t><picture><source srcset="a.png"><source srcset="b.png"><img style="width:10px;height:10px" alt=""></picture>
+<video><source src="v.mp4"><track src="t.vtt"></video><div id=pv style="width:40px;height:10px;position:absolute;top:800px;left:0"></div></div>
+</body></html>

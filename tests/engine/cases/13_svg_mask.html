@@ -1,0 +1,42 @@
+<!doctype html><html><head><style>
+body { margin: 0; }
+.m { mask-image: url("a.svg"); -webkit-mask-size: contain; }
+.n { -webkit-mask: url(b/c.svg) no-repeat center / 50%; }
+.o { mask-image: none; }
+.m.o { mask-image: none; }
+.w1{width:clamp(10px, 5px, 20px)} .w2{width:min(3rem, 100px)} .w3{width:calc(max(1rem, 10px) + 4px)}
+.b1{background:url(a.png) no-repeat center / contain} .b2{background-size:30px auto} .b3{background:url(a.png) 0 0 / 50% 25%} .b4{background:url(a.png)}
+.tall{--q:1}
+</style></head><body>
+<!-- rect: #s1 = 0 0 24 24 -->
+<!-- rect: #s2 = 0 24 100 50 -->
+<!-- rect: #s3 = 0 74 300 150 -->
+<!-- rect: #s4 = 0 224 300 150 -->
+<div><svg style='display:block' id=s1 width="24" height="24" viewBox="0 0 10 10"><rect width="10" height="10"/></svg></div>
+<div><svg style='display:block' id=s2 width="100" viewBox="0 0 10 5"><rect width="10" height="5"/></svg></div>
+<div><svg style='display:block' id=s3></svg></div>
+<div><svg id=s4 viewBox="0 0 10 5" style="display:block;width:300px"><rect width="10" height="5"/></svg></div>
+
+<!-- expect: #m mask-image = a.svg -->
+<div id=m class=m>x</div>
+<!-- expect: #n mask-image = b/c.svg -->
+<div id=n class=n>x</div>
+<!-- expect: #o mask-image = none -->
+<div id=o class="m o">x</div>
+<!-- expect: #w1 width = 10px -->
+<div id=w1 class=w1>x</div>
+<!-- expect: #w2 width = 48px -->
+<div id=w2 class=w2>x</div>
+<!-- expect: #w3 width = 20px -->
+<div id=w3 class=w3>x</div>
+<!-- expect: #b1 background-size = contain -->
+<div id=b1 class=b1>x</div>
+<!-- expect: #b2 background-size = 30px auto -->
+<div id=b2 class=b2>x</div>
+<!-- expect: #b3 background-size = 50% 25% -->
+<div id=b3 class=b3>x</div>
+<!-- expect: #b4 background-size = auto -->
+<div id=b4 class=b4>x</div>
+<!-- expect: #b1 background-color = transparent -->
+<svg width=0 height=0 style="position:absolute"><symbol id=sym viewBox="0 0 20 10"><rect width=20 height=10 /></symbol></svg>
+</body></html>

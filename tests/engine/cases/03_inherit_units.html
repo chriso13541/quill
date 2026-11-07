@@ -1,0 +1,18 @@
+<!doctype html><html><head><style>
+html { font-size: 20px; }
+body { color: #abcdef; font-size: 1.5rem; }
+.child { font-size: 2em; width: 50%; margin-top: 1em; }
+.inl { color: red; }
+</style></head><body>
+<!-- expect: body font-size = 30px -->
+<!-- expect: .child font-size = 60px -->
+<!-- expect: .child width = 50% -->
+<!-- expect: .child margin-top = 60px -->
+<!-- expect: .child color = #abcdef -->
+<!-- expect: .inl color = #00ff00 -->
+<!-- expect: .vis visibility = hidden -->
+<!-- expect: .inner visibility = hidden -->
+<div class="child">c</div>
+<div class="inl" style="color:#00ff00">i</div>
+<div class="vis" style="visibility:hidden"><span class="inner">x</span></div>
+</body></html>

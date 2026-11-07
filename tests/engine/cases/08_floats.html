@@ -1,0 +1,46 @@
+<!doctype html><html><head><style>
+body { margin: 0; }
+.t { height: 200px; overflow: hidden; }
+</style></head><body>
+<!-- rect: #f1 = 0 0 100 50 -->
+<!-- rect: #p1 = 0 0 1024 16 -->
+<!-- line: #p1 0 = 100 0 152 16 -->
+<div class="t"><div id="f1" style="float:left;width:100px;height:50px"></div><div id="p1">aaaa bbbb cccc dddd</div></div>
+
+<!-- rect: #f2 = 924 200 100 50 -->
+<!-- line: #p2 0 = 0 200 152 16 -->
+<div class="t"><div id="f2" style="float:right;width:100px;height:50px"></div><div id="p2">aaaa bbbb cccc dddd</div></div>
+
+<!-- rect: #f3 = 0 400 100 50 -->
+<!-- rect: #c3 = 0 450 1024 10 -->
+<div class="t"><div id="f3" style="float:left;width:100px;height:50px"></div><div id="c3" style="clear:both;height:10px"></div></div>
+
+<!-- rect: #o4 = 0 600 1024 60 -->
+<div class="t"><div id="o4" style="overflow:hidden"><div style="float:left;width:50px;height:60px"></div></div></div>
+
+<!-- rect: #x5 = 0 800 100 48 -->
+<!-- line: #x5 0 = 40 800 32 16 -->
+<!-- line: #x5 1 = 40 816 32 16 -->
+<!-- line: #x5 2 = 0 832 32 16 -->
+<div class="t"><div id="x5" style="width:100px"><div style="float:left;width:40px;height:20px"></div>aaaa bbbb cccc</div></div>
+
+<!-- rect: #a6 = 0 1000 30 10 -->
+<!-- rect: #b6 = 30 1000 30 10 -->
+<!-- rect: #c6 = 0 1010 1000 10 -->
+<div class="t"><div id="a6" style="float:left;width:30px;height:10px"></div><div id="b6" style="float:left;width:30px;height:10px"></div><div id="c6" style="float:left;width:1000px;height:10px"></div></div>
+
+<!-- rect: #f7 = 0 1200 32 16 -->
+<div class="t"><div id="f7" style="float:left">abcd</div></div>
+
+<!-- rect: #f8 = 0 1400 100 50 -->
+<!-- rect: #b8 = 100 1400 924 16 -->
+<div class="t"><div id="f8" style="float:left;width:100px;height:50px"></div><div id="b8" style="overflow:hidden">x</div></div>
+
+<!-- rect: #f9 = 10 1610 100 20 -->
+<div class="t"><div id="f9" style="float:left;margin:10px;width:100px;height:20px"></div></div>
+
+<!-- rect: #p10 = 0 1800 1024 16 -->
+<!-- rect: #f10 = 0 1800 60 30 -->
+<!-- line: #p10 0 = 60 1800 24 16 -->
+<div class="t"><div id="p10"><img id="f10" width="60" height="30" style="float:left">abc</div></div>
+</body></html>

@@ -1,0 +1,30 @@
+<!doctype html><html><head><style>
+p { color: #111111; }
+.a { color: #222222; }
+#x { color: #333333; }
+p.b { color: #444444 !important; }
+.b { color: #555555; }
+div > span { margin-left: 5px; }
+li:first-child { padding-left: 7px; }
+h2 + p { margin-bottom: 3px; }
+input[type=text] { width: 120px; }
+a[href^="http"] { color: #123456; }
+@media (max-width: 500px) { .m { width: 10px; } }
+@media (min-width: 501px) { .m { width: 20px; } }
+</style></head><body>
+<!-- viewport: 800x600 -->
+<!-- expect: p color = #111111 -->
+<!-- expect: p.a color = #222222 -->
+<!-- expect: p#x color = #333333 -->
+<!-- expect: p.b color = #444444 -->
+<!-- expect: span margin-left = 5px -->
+<!-- expect: li padding-left = 7px -->
+<!-- expect: p.sib margin-bottom = 3px -->
+<!-- expect: input width = 120px -->
+<!-- expect: a color = #123456 -->
+<!-- expect: .m width = 20px -->
+<p>plain</p><p class="a">a</p><p id="x" class="a">x</p><p class="b">b</p>
+<div><span>s</span></div><ul><li>1</li><li>2</li></ul>
+<h2>h</h2><p class="sib">sib</p>
+<input type="text"><a href="http://e.com/">a</a><div class="m">m</div>
+</body></html>

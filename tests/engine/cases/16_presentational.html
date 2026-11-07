@@ -1,0 +1,77 @@
+<html><head><title>presentational hints</title></head>
+<!-- No doctype on purpose: old-web pages render in quirks mode. -->
+<!-- viewport: 800x600 -->
+<body bgcolor="#000033" text="#ffff00" link="#00ff00" leftmargin="8" topmargin="8">
+<!-- expect: body color = #ffff00 -->
+<!-- expect: body background-color = #000033 -->
+<!-- expect: body margin-top = 8px -->
+<!-- body link= colours links, and an author rule would still win over it -->
+<!-- expect: a#l color = #00ff00 -->
+<!-- expect: a#al color = #123456 -->
+<style>#al { color: #123456 }</style>
+<p><a id="l" href="x.html">link</a> <a id="al" href="y.html">author-styled link</a> <a id="noref">no href</a></p>
+<!-- expect: a#noref color = #ffff00 -->
+
+<!-- legacy colour parsing: names, #rgb, missing '#', and the famous garbage value -->
+<!-- expect: font#f1 color = #ff0000 -->
+<!-- expect: font#f2 color = #c00000 -->
+<!-- expect: font#f3 color = #ffcc00 -->
+<!-- expect: font#f4 color = #00ff00 -->
+<!-- expect: font#f5 color = #ffff00 -->
+<p><font id="f1" color="Red">a</font><font id="f2" color="chucknorris">b</font><font id="f3" color="ffcc00">c</font><font
+id="f4" color="#0f0">d</font><font id="f5" color="transparent">e</font></p>
+
+<!-- font size: 1..7 and relative to 3 -->
+<!-- expect: font#s3 font-size = 16px -->
+<!-- expect: font#s7 font-size = 48px -->
+<!-- expect: font#sp1 font-size = 18px -->
+<!-- expect: font#sp9 font-size = 48px -->
+<p><font id="s3" size="3">3</font><font id="s7" size="7">7</font><font id="sp1" size="+1">+1</font><font id="sp9" size="+9">+9</font></p>
+
+<!-- tables: width, cellpadding, border (table outset, cells 1px inset gray), bgcolor, cellspacing -->
+<!-- expect: table#t width = 300px -->
+<!-- expect: table#t background-color = #333333 -->
+<!-- expect: table#t border-left-color = #808080 -->
+<!-- expect: td#c1 padding-left = 5px -->
+<!-- expect: td#c1 background-color = #008000 -->
+<!-- expect: td#c1 border-right-color = #808080 -->
+<!-- the row colour belongs to the row (painted behind its cells), not to each cell -->
+<!-- expect: tr#r1 background-color = #660000 -->
+<!-- expect: td#c2 background-color = transparent -->
+<!-- quirks mode: the table does not inherit the surrounding <font size=1> -->
+<!-- expect: td#c1 font-size = 16px -->
+<!-- <center> centres the 300px-wide table: x = 8 + (784 - 300) / 2 -->
+<!-- height: (16 + 2*5 + 2*1) + (20 + 2*5 + 2*1) + 2*2 = 64 -->
+<!-- rect: #t = 250 144 300 64 -->
+<font size="1"><center><table id="t" width="300" border="2" cellpadding="5" cellspacing="0" bgcolor="#333333">
+<tr id="r1" bgcolor="#660000"><td id="c1" bgcolor="green">x</td><td id="c2">y</td></tr>
+<tr><td colspan="2" height="20">z</td></tr></table></center></font>
+
+<!-- blocks inside an inline <font> leave no empty lines behind (p margins 1em collapse straight through) -->
+<!-- rect: #g1 = 8 224 784 16 -->
+<!-- rect: #g2 = 8 256 784 16 -->
+<font face="Arial"><p id="g1">one</p>
+<p id="g2">two</p></font>
+
+<!-- div align=center centres a narrower child table; align=right pushes it right -->
+<!-- rect: #dt = 300 288 200 22 -->
+<!-- rect: #rt = 592 310 200 22 -->
+<div align="center"><table id="dt" width="200"><tr><td>c</td></tr></table></div>
+<div align="right"><table id="rt" width="200"><tr><td>r</td></tr></table></div>
+
+<!-- img: align=left floats, hspace/vspace are margins, border= draws a solid border -->
+<!-- expect: img#i float = left -->
+<!-- expect: img#i margin-left = 7px -->
+<!-- expect: img#i margin-top = 3px -->
+<!-- expect: img#i width = 40px -->
+<!-- <br clear=all> grows the div past the float: 332 + 3 + (2+30+2) + 3 = 372, then p's 16px margin -->
+<!-- rect: #after = 8 388 784 16 -->
+<div><img id="i" src="none.gif" align="left" hspace="7" vspace="3" border="2" width="40" height="30">beside<br clear="all"></div>
+<p id="after">after the float</p>
+
+<!-- hr: size / width / noshade / color -->
+<!-- expect: hr#h1 height = 4px -->
+<!-- expect: hr#h1 width = 200px -->
+<!-- expect: hr#h2 background-color = #ff0000 -->
+<hr id="h1" size="6" width="200"><hr id="h2" color="red" noshade>
+</body></html>

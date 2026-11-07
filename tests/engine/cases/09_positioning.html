@@ -1,0 +1,40 @@
+<!doctype html><html><head><style>
+body { margin: 0; }
+.t { height: 200px; overflow: hidden; position: relative; }
+</style></head><body>
+<!-- rect: #a1 = 10 20 30 40 -->
+<div class="t"><div id="a1" style="position:absolute;left:10px;top:20px;width:30px;height:40px"></div></div>
+
+<!-- rect: #a2 = 984 355 30 40 -->
+<div class="t"><div id="a2" style="position:absolute;right:10px;bottom:5px;width:30px;height:40px"></div></div>
+
+<!-- rect: #a3 = 0 430 10 10 -->
+<div class="t"><div style="height:30px"></div><div id="a3" style="position:absolute;width:10px;height:10px"></div></div>
+
+<!-- rect: #a4 = 10 600 994 10 -->
+<div class="t"><div id="a4" style="position:absolute;left:10px;right:20px;height:10px"></div></div>
+
+<!-- rect: #a5 = 0 800 32 16 -->
+<div class="t"><div id="a5" style="position:absolute">abcd</div></div>
+
+<!-- rect: #r6 = 5 1003 100 10 -->
+<!-- rect: #n6 = 0 1010 100 10 -->
+<div class="t" style="position:static"><div id="r6" style="position:relative;left:5px;top:3px;width:100px;height:10px"></div><div id="n6" style="width:100px;height:10px"></div></div>
+
+<!-- rect: #f7 = 0 0 10 10 -->
+<div class="t"><div id="f7" style="position:fixed;top:0;left:0;width:10px;height:10px"></div></div>
+
+<!-- rect: #a8 = 462 1400 100 10 -->
+<div class="t"><div id="a8" style="position:absolute;left:0;right:0;width:100px;height:10px;margin:0 auto"></div></div>
+
+<!-- rect: #a9 = 0 1600 512 10 -->
+<div class="t"><div id="a9" style="position:absolute;width:50%;height:10px"></div></div>
+
+<!-- rect: #o10 = 20 1820 100 100 -->
+<!-- rect: #i10 = 25 1830 10 10 -->
+<div class="t"><div id="o10" style="position:absolute;left:20px;top:20px;width:100px;height:100px"><div id="i10" style="position:absolute;left:5px;top:10px;width:10px;height:10px"></div></div></div>
+
+<!-- rect: #m11 = 0 2000 1024 20 -->
+<!-- rect: #a11 = 40 2000 10 10 -->
+<div class="t"><div id="m11" style="height:20px;position:relative"><div id="a11" style="position:absolute;left:40px;top:0;width:10px;height:10px"></div></div></div>
+</body></html>

@@ -1,0 +1,49 @@
+<!doctype html><html><head><style>
+:root { --c: #ff0000; --r: 4px; }
+.btn { background-color: var(--bg, #111111); color: var(--fg); padding: var(--pad, 1px); }
+.btn-a { --bg: #00ff00; --fg: #0000ff; }
+.btn-b { --bg: var(--c); --pad: 7px; }
+.dark { --c: #123456; }
+.box { border-left-color: var(--c); }
+.dark .box { --pad: 3px; }
+.card { border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,.5), inset 1px 1px 0 1px #fff; }
+.card.sq { border-radius: 0 !important; }
+.c2 { border-radius: 10px 20px; }
+.c3 { border-radius: 50%; border-top-left-radius: 4px 6px; }
+.c4 { border-radius: var(--r); }
+#c5 { border-radius: 3px; }
+.c5 { border-radius: 9px; }
+</style></head><body>
+<!-- expect: #a background-color = #00ff00 -->
+<!-- expect: #a padding-left = 1px -->
+<div id="a" class="btn btn-a">x</div>
+<!-- expect: #b background-color = #ff0000 -->
+<!-- expect: #b padding-left = 7px -->
+<div id="b" class="btn btn-b">x</div>
+<!-- expect: #c background-color = #111111 -->
+<div id="c" class="btn">x</div>
+<div class="dark">
+<!-- expect: #d background-color = #123456 -->
+<!-- expect: #d padding-left = 3px -->
+<div id="d" class="btn btn-b box">x</div>
+<!-- expect: #e border-left-color = #123456 -->
+<div id="e" class="box">x</div>
+</div>
+<!-- expect: #f border-left-color = #ff0000 -->
+<div id="f" class="box">x</div>
+<!-- expect: #g border-radius = 8px 8px 8px 8px -->
+<!-- expect: #g box-shadow = 0 2 4 0 80000000, inset 1 1 0 1 ffffffff -->
+<div id="g" class="card">x</div>
+<!-- expect: #h border-radius = 0px 0px 0px 0px -->
+<div id="h" class="card sq">x</div>
+<!-- expect: #i border-radius = 10px 20px 10px 20px -->
+<div id="i" class="c2">x</div>
+<!-- expect: #j border-radius = 4px/6px 50% 50% 50% -->
+<div id="j" class="c3">x</div>
+<!-- expect: #k border-radius = 4px 4px 4px 4px -->
+<div id="k" class="c4">x</div>
+<!-- expect: #c5 border-radius = 3px 3px 3px 3px -->
+<div id="c5" class="c5">x</div>
+<!-- expect: #l border-radius = 5px 5px 5px 5px -->
+<div id="l" style="border-radius: 5px">x</div>
+</body></html>

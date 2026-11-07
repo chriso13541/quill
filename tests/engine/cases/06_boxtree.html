@@ -1,0 +1,172 @@
+<!doctype html><html><head><style>
+.fl { float: left; }
+.abs { position: absolute; }
+.hid { display: none; }
+.tbl { display: table; }
+.cell { display: table-cell; }
+.row { display: table-row; }
+.flex { display: flex; }
+.pb::before { content: "pre"; }
+.pa::after { content: ""; display: block; clear: both; }
+.pq::before { content: attr(data-x); }
+</style></head><body>
+
+<!-- boxes: #t1
+div#t1 block
+  anon block
+    "text before"
+  p block
+    "para"
+  anon block
+    em inline
+      "inline after"
+-->
+<div id="t1">text before<p>para</p><em>inline after</em></div>
+
+<!-- boxes: #t2
+div#t2 block
+  " a "
+  span inline
+    "b"
+  " "
+  " "
+-->
+<div id="t2">  a <span>b</span> <b class="hid">x</b> </div>
+
+<!-- boxes: #t3
+div#t3 block
+  anon block
+    a inline
+      "before "
+  div block
+    "inside"
+  anon block
+    a inline (cont)
+      " after"
+-->
+<div id="t3"><a href="/x">before <div>inside</div> after</a></div>
+
+<!-- boxes: #t4
+ul#t4 block
+  li list-item
+    marker "•"
+    "one"
+  li list-item
+    marker "•"
+    "two"
+-->
+<ul id="t4"><li>one</li><li>two</li></ul>
+
+<!-- boxes: #t5
+ol#t5 block
+  li list-item
+    marker "3."
+    "a"
+  li list-item
+    marker "9."
+    "b"
+  li list-item
+    marker "10."
+    "c"
+-->
+<ol id="t5" start="3"><li>a</li><li value="9">b</li><li>c</li></ol>
+
+<!-- boxes: #t6
+div#t6.tbl table
+  anon table-row
+    anon table-cell
+      "loose text"
+  div.row table-row
+    anon table-cell
+      "x"
+    div.cell table-cell
+      "y"
+-->
+<div id="t6" class="tbl">loose text<div class="row">x<div class="cell">y</div></div></div>
+
+<!-- boxes: #t7
+div#t7 block
+  anon table
+    anon table-row
+      span.cell table-cell
+        "orphan cell"
+-->
+<div id="t7"><span class="cell">orphan cell</span></div>
+
+<!-- boxes: #t8
+div#t8.flex flex
+  anon block
+    "text item "
+  span block
+    "span item"
+  div block
+    "div item"
+-->
+<div id="t8" class="flex">text item <span>span item</span><div>div item</div></div>
+
+<!-- boxes: #t9
+div#t9.pb.pa block
+  anon block
+    ::before inline
+      "pre"
+    "body"
+  ::after block
+-->
+<div id="t9" class="pb pa">body</div>
+
+<!-- boxes: #t10
+p#t10 block
+  "line one"
+  br
+  "line two"
+-->
+<p id="t10">line one<br>line two</p>
+
+<!-- boxes: #t11
+div#t11 block
+  img inline-block replaced
+  input inline-block replaced
+-->
+<div id="t11"><img src="a.png" alt="x"><input type="text"><input type="hidden"></div>
+
+<!-- boxes: #t12
+div#t12 block
+  "a"
+  span.fl block float:left
+    "f"
+  "b"
+-->
+<div id="t12">a<span class="fl">f</span>b</div>
+
+<!-- boxes: #t13
+div#t13 block
+  anon block
+    "x"
+  div block
+    "y"
+  span.abs block pos:absolute
+    "z"
+  anon block
+    "w"
+-->
+<div id="t13">x<div>y</div><span class="abs">z</span>w</div>
+
+<!-- boxes: #t14
+div#t14.pq block
+  ::before inline
+    "hello"
+  "body"
+-->
+<div id="t14" class="pq" data-x="hello">body</div>
+
+<!-- boxes: table#t15
+table#t15 table
+  tbody table-row-group
+    tr table-row
+      td table-cell
+        "a"
+      td table-cell
+        "b"
+-->
+<table id="t15"><tr><td>a</td><td>b</td></tr></table>
+</body></html>

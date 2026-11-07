@@ -1,0 +1,30 @@
+<!doctype html><html><head><style>
+body { margin: 0; }
+.t { height: 200px; overflow: hidden; }
+.g { display: grid; }
+</style></head><body>
+<!-- rect: #a1 = 0 0 100 10 -->
+<!-- rect: #b1 = 100 0 200 10 -->
+<!-- rect: #c1 = 300 0 700 10 -->
+<div class=t><div class=g style="grid-template-columns:100px 200px 1fr;width:1000px"><div id=a1 style="height:10px"></div><div id=b1 style="height:10px"></div><div id=c1 style="height:10px"></div></div></div>
+
+<!-- rect: #a2 = 0 200 450 10 -->
+<!-- rect: #b2 = 550 200 450 10 -->
+<!-- rect: #c2 = 0 220 450 10 -->
+<div class=t><div class=g style="grid-template-columns:1fr 1fr;gap:10px 100px;width:1000px"><div id=a2 style="height:10px"></div><div id=b2 style="height:10px"></div><div id=c2 style="height:10px"></div></div></div>
+
+<!-- rect: #a3 = 0 400 1000 10 -->
+<!-- rect: #b3 = 0 410 500 10 -->
+<!-- rect: #c3 = 500 410 500 10 -->
+<div class=t><div class=g style="grid-template-columns:1fr 1fr;width:1000px"><div id=a3 style="grid-column:1/-1;height:10px"></div><div id=b3 style="height:10px"></div><div id=c3 style="height:10px"></div></div></div>
+
+<!-- rect: #a4 = 0 600 500 20 -->
+<!-- rect: #b4 = 500 600 500 20 -->
+<div class=t><div class=g style="grid-template-areas:'h m';grid-template-columns:1fr 1fr;width:1000px"><div id=b4 style="grid-area:m;height:20px"></div><div id=a4 style="grid-area:h;height:20px"></div></div></div>
+
+<!-- rect: #a5 = 450 800 100 20 -->
+<div class=t><div class=g style="width:1000px;height:100px;justify-content:center;grid-template-columns:100px"><div id=a5 style="height:20px"></div></div></div>
+
+<!-- rect: #a6 = 450 1030 100 40 -->
+<div class=t><div class=g style="width:1000px;justify-items:center;align-items:center;grid-template-rows:100px"><div id=a6 style="width:100px;height:40px"></div></div></div>
+</body></html>
